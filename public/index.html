@@ -23,21 +23,19 @@
   
   <link rel="stylesheet" href="css/css_login/style.css">
 
-  <script src="/js/funciones.js"></script>
+  <script src="js/funciones.js"></script>
  
   <script>
     function recupDatos() {
 
     alert("holi");  
+
+
     const pass = document.getElementById("clave");  
     const email = document.getElementById("email");
     
     const correo = email.value;
     const clave = pass.value;
-
-    console.log(email.value);
-    console.log(correo);
-
     crearusuario(correo,clave);
 
     }
@@ -77,22 +75,19 @@
 				</div>
 			</div>
 			<div class="sign-up-htm">
-				<div class="group">
-					<label for="user" class="label">Username</label>
-					<input id="user" type="text" class="input">
-				</div>
+				
+
+        <div class="group">
+          <label for="pass" class="label">Email Address</label>
+          <input id="email" type="text" class="input">
+        </div>
+
 				<div class="group">
 					<label for="pass" class="label">Password</label>
 					<input id="clave" type="password" class="input" data-type="password">
 				</div>
-				<div class="group">
-					<label for="pass" class="label">Repeat Password</label>
-					<input id="pass" type="password" class="input" data-type="password">
-				</div>
-				<div class="group">
-					<label for="pass" class="label">Email Address</label>
-					<input id="email" type="text" class="input">
-				</div>
+				
+				
 				<div class="group">
 					<input onclick="recupDatos()" type="submit" class="button" value="Sign Up">
 				</div>

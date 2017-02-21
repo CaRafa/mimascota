@@ -1,16 +1,30 @@
 
 function crearusuario (email, password){
 
-console.log("js "+email);
+ firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
+ var user = firebase.auth().currentUser;
 
-firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user) {
-    var user = firebase.auth().currentUser;
-    logUser(user); // Optional
-}, function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-});
+ alert("usuario creado");
+ console.log(user.uid);
+ //window.location.replace("public/views/prueba.html");
+
+
+}),
+function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  if (errorCode == 'auth/weak-password') {
+    alert('The password is too weak.');
+  } 
+  else if (errorCode == 'auth/email-already-in-use'){
+  	alert('correo ya en uso');
+  }
+  else {
+    alert(errorMessage);
+  }
+
+}
 
 }
 
