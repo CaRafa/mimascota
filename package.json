@@ -1,0 +1,22 @@
+{
+  "name": "mimascota",
+  "version": "1.0.0",
+  "description": "microProyecto de sistemas de información",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crafael1/mimascota.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crafael1/mimascota/issues"
+  },
+  "homepage": "https://github.com/crafael1/mimascota#readme",
+  "dependencies": {
+    "material-design-lite": "^1.3.0"
+  }
+}
