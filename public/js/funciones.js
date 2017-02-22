@@ -6,7 +6,7 @@ function crearusuario (email, password){
 
  alert("usuario creado");
  console.log(user.uid);
- //window.location.replace("public/views/prueba.html");
+ window.location.replace("/prueba.html");
 
 
 }),
