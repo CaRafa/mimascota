@@ -71,7 +71,7 @@ firebase.database().ref('entradas/'+cedula).set({
 
 function crearPerro(){
 
-
+alert('hola');
 var nombre = document.getElementById('getnombre').value;
 var edad = document.getElementById('getedad').value;
 var historia = document.getElementById('gethist').value;
@@ -85,6 +85,7 @@ queryString.split(/\&/).forEach(function(keyValuePair){
 });
 
 var cedula = decodeURI(GET["id"]);
+alert(cedula);
 
 firebase.database().ref('perro/'+cedula).set({
   nombre:nombre,
