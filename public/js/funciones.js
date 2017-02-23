@@ -1,33 +1,29 @@
 
-function crearadmin (){
+function crearAdmin (){
 
  var correo = document.getElementById('getemail').value;
+
  var password = document.getElementById('getpassword').value;
 
- firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
- var user = firebase.auth().currentUser;
-
- alert("usuario creado");
- console.log(user.uid);
- window.location.replace("/");
 
 
-}),
-function(error) {
-  // Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  if (errorCode == 'auth/weak-password') {
-    alert('The password is too weak.');
-  } 
-  else if (errorCode == 'auth/email-already-in-use'){
-  	alert('correo ya en uso');
-  }
-  else {
-    alert(errorMessage);
-  }
-
-}
+firebase.auth().createUserWithEmailAndPassword(correo, password).catch(function(error) {
+        if (error.code){
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(errorMessage);
+            console.log(errorMessage);
+            
+        }
+        else{
+            alert("usuario creado");
+            var user = firebase.auth().currentUser;
+ 
+           console.log(user.uid);
+            window.location = "/";
+        }
+    });
 
 }
 
@@ -39,12 +35,14 @@ var apellido = document.getElementById('getapellido').value;
 var cedula = document.getElementById('getcedula').value;
 var telefono = document.getElementById('gettelefono').value;
 var correo = document.getElementById('getemail').value;
+var estado = "Nuevo";
 
 firebase.database().ref('entradas/'+cedula).set({
   nombre:nombre,
   apellido:apellido,
   telefono:telefono,
   correo:correo,
+  estado: estado
 }).then(function(){
   window.location = "/registropet?id="+cedula;
 
@@ -60,10 +58,31 @@ function crearPerro(){
 
 var nombre = document.getElementById('getnombre').value;
 var edad = document.getElementById('getedad').value;
+var historia = document.getElementById('gethist').value;
 
-var url = $(location).attr('href'); 
-var cedula = decodeURIComponent(url);
-console.log(cedula);
+var GET = {};
+var queryString = window.location.search.replace(/^\?/,'');
+queryString.split(/\&/).forEach(function(keyValuePair){
+  var paramName = keyValuePair.replace(/=.*$/,"");
+  var paramValue = keyValuePair.replace(/^[^=]*\=/,"");
+  GET[paramName] = paramValue;
+});
+
+var cedula = decodeURI(GET["id"]);
+
+firebase.database().ref('perro/'+cedula).set({
+  nombre:nombre,
+  edad:edad,
+  historia:historia
+}).then(function(){
+  window.location = "/";
+
+}, function(error){
+  alert(error.code);
+});
+
+
+
 
 }
 
