@@ -88,13 +88,24 @@ firebase.database().ref('perro/'+cedula).set({
 
 
 
+/*
 
 
 
+<!-- STORAGE ORIGINAL
+
+service firebase.storage {
+  match /b/project--453990862005505311.appspot.com/o {
+    match /{allPaths=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+
+-->
 
 
-
-
+*/
 
 
 
