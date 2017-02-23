@@ -173,10 +173,11 @@
 
    fileButton.addEventListener('change',function(e){
     //Get file
-    var file = e.target.files[0];
+    var file = e.target.files;
     var cont = 0;
 
-    for (var i=0; i <= e.target.files.length; i++) {
+
+    for (var i=0; i < e.target.files.length; i++) {
       cont++;
     }
 
@@ -185,10 +186,12 @@
     }
     else{
 
-    //Create storage ref
-    var storageRef = firebase.storage().ref('images/'+ file.name);
+    for (var i = 0; i <= e.target.files.length; i++) {
+      
+       //Create storage ref
+    var storageRef = firebase.storage().ref('images/'+ file[i].name);
     //upload file
-    var task = storageRef.put(file);
+    var task = storageRef.put(file[i]);
     //update progress bar
 
     task.on('state_changed',
@@ -209,6 +212,13 @@
       }
 
       );
+
+
+
+
+    }
+
+   
    }
 
 });
