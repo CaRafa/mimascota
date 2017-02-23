@@ -1,29 +1,23 @@
 
-function crearAdmin (){
 
- var correo = document.getElementById('getemail').value;
+function crearAdmin(){
 
- var password = document.getElementById('getpassword').value;
+      const email = document.getElementById('getemail').value;
+      const password = document.getElementById('getpassword').value;
 
 
+        firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
+        console.log('everything went fine');
+        console.log('user object:' + user);
+        window.location = "/";
+        
+        }).catch(function(error){
 
-firebase.auth().createUserWithEmailAndPassword(correo, password).catch(function(error) {
-        if (error.code){
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            alert(errorMessage);
-            console.log(errorMessage);
-            
-        }
-        else{
-            alert("usuario creado");
-            var user = firebase.auth().currentUser;
- 
-           console.log(user.uid);
-            window.location = "/";
-        }
-    });
+         alert(error.code);
+
+        });
+
+
 
 }
 
