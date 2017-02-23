@@ -1,12 +1,15 @@
 
-function crearusuario (email, password){
+function crearadmin (){
+
+ var correo = document.getElementById('getemail').value;
+ var password = document.getElementById('getpassword').value;
 
  firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
  var user = firebase.auth().currentUser;
 
  alert("usuario creado");
  console.log(user.uid);
- window.location.replace("/prueba.html");
+ window.location.replace("/");
 
 
 }),
@@ -43,13 +46,28 @@ firebase.database().ref('entradas/'+cedula).set({
   telefono:telefono,
   correo:correo,
 }).then(function(){
-  window.location = "/";
+  window.location = "/registropet?id="+cedula;
 
 }, function(error){
   alert(error.code);
 });
 
 }
+
+
+function crearPerro(){
+
+
+var nombre = document.getElementById('getnombre').value;
+var edad = document.getElementById('getedad').value;
+
+var url = $(location).attr('href'); 
+var cedula = decodeURIComponent(url);
+console.log(cedula);
+
+}
+
+
 
 
 
