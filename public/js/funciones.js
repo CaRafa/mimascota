@@ -1,4 +1,26 @@
 
+function inicioSesion(){
+
+      const email = document.getElementById('inicio_email').value;
+      const password = document.getElementById('inicio_pass').value;
+
+        firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
+        console.log('user object:' + user.uid);
+        
+        }).catch(function(error){
+
+         alert(error.code);
+
+        });
+
+
+
+
+}
+
+
+
+
 
 function crearAdmin(){
 

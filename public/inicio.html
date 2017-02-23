@@ -112,8 +112,8 @@
       
 
       <section>
-      	 <div class="row">
-    <form class="col s12">
+         <div class="row">
+    <div class="col s12">
     <br>
     <br>
 
@@ -121,7 +121,7 @@
 
         <div class="input-field col s4 offset-s4">
           <i class="material-icons prefix">mail_outline</i>
-          <input placeholder="huellas@gmail.com" id="email" type="email" class="validate">
+          <input placeholder="huellas@gmail.com" id="inicio_email" type="email" class="validate">
           <label class ="active" for="email" data-error="Correo inválido" data-success="">Correo</label>
         </div>
         </div>
@@ -129,28 +129,27 @@
         <div class="row">
         <div class="input-field col s4 offset-s4">
           <i class="material-icons prefix">lock</i>
-          <input id="password" type="password" class="validate">
+          <input id="inicio_pass" type="password" class="validate">
           <label class="active" for="password" >Contraseña</label>
         </div>
       </div>
-      </form>
+      </div>
 
       </div>
 
     </section>
      <div class="modal-footer" align="center">
 
-    <button class="modal-action modal-close waves-effect waves-light btn-medium" type="submit" name="action">Confirmar
+    <button onclick="inicioSesion()" class="modal-action modal-close waves-effect waves-light btn-medium" type="submit" name="action">Confirmar
     <i class="material-icons right">send</i>
-  	</button>
+    </button>
 
     </div>
   </div>
 
 </div>
-      	
+        
 </section>
-
 
 
       <!--Import jQuery before materialize.js-->
