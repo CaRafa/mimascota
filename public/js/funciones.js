@@ -29,7 +29,6 @@ function(error) {
 }
 
 
-
 function crearEntrada(){
 
 var nombre = document.getElementById('getnombre').value;
