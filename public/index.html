@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html >
-<head>
-  <meta charset="UTF-8">
-  <title>mi login</title>
-  
+  <!DOCTYPE html>
+  <html>
+    <head>
   <!-- Esto no se toca -->
   <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
   <script>
@@ -18,91 +15,181 @@
    firebase.initializeApp(config);
   </script>
   <!-- hasta aqui -->
-  
 
 
   <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Open+Sans:600'>
   
-  <link rel="stylesheet" href="css1/css_login/style.css">
-
   <script src="js/funciones.js"></script>
- 
-  <script>
-  
-    function recupDatos() {
-
-    alert("holi");  
 
 
-    const pass = document.getElementById("clave");  
-    const email = document.getElementById("email");
+    <meta charset="UTF-8">
+
+    <link rel="icon" type="image/png" href="/images/doggy.png" sizes="16x16">
+	
+	<title>Mi Mascota</title>
+
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    </head>
+
+    <body>
+
+
+<!-- Barra de navegación -->
+
+<header>
+  <nav>
+   
+  <ul id="dropdown1" class="dropdown-content">
+  <li><a href="" data-target="modal1">Iniciar Sesión</a></li>
+  <li><a href="http://localhost:5000/registro">Registrarse</a></li>
+	</ul>
+	<nav>
+  	<div class="nav-wrapper transparent">
+
+    <a href="http://localhost:5000/homepage" class="brand-logo">Mi Mascota</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+    <ul class="right hide-on-med-and-down">
+
     
-    const correo = email.value;
-    const clave = pass.value;
-    crearusuario(correo,clave);
 
-    }
-  </script>
+      <li><a href="http://localhost:5000/inicio"><i class="material-icons"><i class="material-icons">home</i></i></a></li>
+      <li><a href="http://localhost:5000/registropet"><i class="material-icons">pets</i></a></li>
 
-</head>
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">face</i><i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
 
-<body>
-  <div class="login-wrap">
-	<div class="login-html">
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Iniciar sesión</label>
-		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrarse</label>
-		<div class="login-form">
-			<div class="sign-in-htm">
-				<div class="group">
-					<label for="user" class="label">Usuario</label>
-					<input id="user" type="text" class="input">
-				</div>
-				<div class="group">
-					<label for="pass" class="label">Clave</label>
-					<input id="pass" type="password" class="input" data-type="password">
-				</div>
-				<div class="group">
-					<input id="check" type="checkbox" class="check" checked>
-					<label for="check"><span class="icon"></span>Recordarme</label>
-				</div>
-        <!-- boton de sign in -->
-				<div class="group">
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="sass.html">Iniciar Sesion</a></li>
+        <li><a href="badges.html">Registrarse</a></li>
+        <li><a href="collapsible.html">Mascotas</a></li>
+      </ul>
+    </div>
+  </nav>
+</nav>
+</header>
 
-        <input type="submit" class="button" value="Sign In">
-        
-				</div>
 
-				<div class="hr"></div>
-				<div class="foot-lnk">
-					<a href="#forgot">¿Olvidó su clave?</a>
-				</div>
-			</div>
-			<div class="sign-up-htm">
-				
+	<section >
 
-        <div class="group">
-          <label for="pass" class="label">Correo</label>
-          <input id="email" type="text" class="input">
+		<div class="fullscreen" >
+
+	<div class="slider" >
+    <ul class="slides" >
+      <li>
+        <img src="/images/doggies.jpg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>¡Bienvenido al concurso Mi Mascota!</h3>
+          <h5 class="light grey-text text-lighten-3"> </h5>
+        </div>
+      </li>
+      <li>
+        <img src="/images/dog.jpg"> <!-- random image -->
+        <div class="caption left-align">
+          <h3>¡Participa ahora!</h3>
+          <h5 class="light white-text text-lighten-3"> <a href="http://localhost:5000/inicio">Entrar</a></h5>
+        </div>
+    </li>
+    </ul>
+  </div>
+		
+  </div>
+  	</section>
+
+<section>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4 align="center">Inicio de Sesión</h4>
+      
+
+      <section>
+      	 <div class="row">
+    <form class="col s12">
+    <br>
+    <br>
+
+      <div class="row">
+
+        <div class="input-field col s4 offset-s4">
+          <i class="material-icons prefix">mail_outline</i>
+          <input placeholder="huellas@gmail.com" id="email" type="email" class="validate">
+          <label class ="active" for="email" data-error="Correo inválido" data-success="">Correo</label>
+        </div>
         </div>
 
-				<div class="group">
-					<label for="pass" class="label">Clave</label>
-					<input id="clave" type="password" class="input" data-type="password">
-				</div>
-				
-				
-				<div class="group">
-					<input onclick="recupDatos()" type="submit" class="button" value="Sign Up">
-				</div>
-				<div class="hr"></div>
-				<div class="foot-lnk">
-					<label for="tab-1">Already Member?</a>
-				</div>
-			</div>
-		</div>
-	</div>
+        <div class="row">
+        <div class="input-field col s4 offset-s4">
+          <i class="material-icons prefix">lock</i>
+          <input id="password" type="password" class="validate">
+          <label class="active" for="password" >Contraseña</label>
+        </div>
+      </div>
+      </form>
+
+      </div>
+
+    </section>
+     <div class="modal-footer" align="center">
+
+    <button class="modal-action modal-close waves-effect waves-light btn-medium" type="submit" name="action">Confirmar
+    <i class="material-icons right">send</i>
+  	</button>
+
+    </div>
+  </div>
+
 </div>
-  
-  
-</body>
-</html>
+      	
+</section>
+
+
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+      <script src="js/jquery.js" ></script>
+      <script>
+
+      	$( document ).ready(function(){
+
+      		$(".button-collapse").sideNav();
+      		$('.slider').slider({height: 590});
+      		
+      		});
+
+      </script>
+
+<script >
+ $(document).ready(function(){
+  $('.modal').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+        
+        console.log(modal, trigger);
+      },
+      complete: function() {  } // Callback for Modal close
+    }
+  );
+});
+  </script>
+
+
+    </body>
+  </html>
+

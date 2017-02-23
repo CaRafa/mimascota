@@ -54,7 +54,7 @@
 	<nav>
   	<div class="nav-wrapper transparent">
 
-    <a href="http://localhost:5000/homepage" class="brand-logo">Mi Mascota</a>
+    <a href="/" class="brand-logo">Mi Mascota</a>
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
     <ul class="right hide-on-med-and-down">
@@ -80,7 +80,9 @@
 </header>
 
 <section>
-  
+
+<!-- AQUI COMIENZA EL FORMULARIO-->
+
     <div class="row">
     <form class="col s12">
 
@@ -88,21 +90,21 @@
 
         <div class="input-field col s4 offset-s4">
           <i class="material-icons prefix">account_circle</i>
-          <input id="nombre" type="text" class="validate">
+          <input id="getnombre" type="text" class="validate">
           <label for="nombre">Nombre</label>
         </div>
         </div>
 
         <div class="row">
         <div class="input-field col s4 offset-s4">
-          <input id="apellido" type="text" class="validate">
+          <input id="getapellido" type="text" class="validate">
           <label for="apellido">Apellido</label>
         </div>
       </div>
 
         <div class="row">
         <div class="input-field col s4 offset-s4">
-          <input id="cedula" type="number" class="validate">
+          <input id="getcedula" type="number" class="validate">
           <label for="cedula">Cedula</label>
         </div>
       </div>      
@@ -111,7 +113,7 @@
 
         <div class="input-field col s4 offset-s4">
           <i class="material-icons prefix">call</i>
-          <input id="telefono" type="number" class="validate">
+          <input id="gettelefono" type="number" class="validate">
           <label for="telefono">Teléfono</label>
         </div>
         </div>
@@ -120,23 +122,16 @@
       <div class="row">
         <div class="input-field col s4 offset-s4">
           <i class="material-icons prefix">mail_outline</i>
-          <input placeholder="huellas@gmail.com" id="email" type="email" class="validate">
+          <input placeholder="huellas@gmail.com" id="getemail" type="email" class="validate">
           <label class ="active" for="email" data-error="Correo inválido" data-success="Correo válido">Correo</label>
         </div>
       </div>
 
-      <div class="row">
-        <div class="input-field col s4 offset-s4">
-          <i class="material-icons prefix">lock</i>
-          <input id="password" type="password" class="validate">
-          <label class="active" for="password" >Contraseña</label>
-        </div>
-      </div>
 
     </form>
     <div class="row">
     <div class="input-field col s4 offset-s4">
-      <button class="btn waves-effect waves-light" type="submit" name="action">Confirmar
+      <button onclick="crearEntrada()" class="btn waves-effect waves-light" type="submit" name="action">Confirmar
     <i class="material-icons right">send</i>
   </button>
   </div>
