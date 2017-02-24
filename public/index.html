@@ -4,6 +4,8 @@
   <!-- Esto no se toca -->
   <script src="https://www.gstatic.com/firebasejs/3.6.9/firebase.js"></script>
   <script>
+
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyDxdpDchkb7AEk-ZbfQh86Q8EqdqgWSGvQ",
@@ -28,6 +30,16 @@
 	
 	<title>Mi Mascota</title>
 
+  <style >
+      .a {
+        display: none;
+      }
+
+      .b{
+        display: block;
+      }
+      </style>
+
       <!--Import Google Icon Font-->
       <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -48,8 +60,8 @@
   <nav>
    
   <ul id="dropdown1" class="dropdown-content">
-  <li><a href="" data-target="modal1">Iniciar Sesión</a></li>
-  <li><a href="/registro">Registrarse</a></li>
+  <li><a href="" class = "b" data-target="modal1" id="iniciar"> Iniciar Sesión</a></li>
+  <li><a href="" class="a" data-target=" " id="cerrar" display="none"> Cerrar Sesión</a></li>
 	</ul>
 	<nav>
   	<div class="nav-wrapper transparent">
@@ -62,10 +74,11 @@
     
 
       <li><a href="/inicio"><i class="material-icons"><i class="material-icons">home</i></i></a></li>
-      <li><a href="/registropet"><i class="material-icons">pets</i></a></li>
+      <li><a href="/registro"><i class="material-icons">pets</i></a></li>
 
       <!-- Dropdown Trigger -->
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">face</i><i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a class="dropdown-button" href="#!" onclick="cs()" data-activates="dropdown1"><i class="material-icons">
+      face</i><i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
 
       <ul class="side-nav" id="mobile-demo">
@@ -96,7 +109,7 @@
         <img src="/images/dog.jpg"> <!-- random image -->
         <div class="caption left-align">
           <h3>¡Participa ahora!</h3>
-          <h5 class="light white-text text-lighten-3"> <a href="http://localhost:5000/inicio">Entrar</a></h5>
+          <h5 class="light white-text text-lighten-3"> <a href="/registropet">Entrar</a></h5>
         </div>
     </li>
     </ul>

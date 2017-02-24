@@ -48,24 +48,24 @@
   <nav>
    
   <ul id="dropdown1" class="dropdown-content">
-  <li><a href="#!">Iniciar Sesión</a></li>
-  <li><a href="#!">Registrarse</a></li>
+  <li><a href="" class = "b" data-target="modal1" id="iniciar"> Iniciar Sesión</a></li>
   </ul>
   <nav>
     <div class="nav-wrapper transparent">
 
-    <a href="http://localhost:5000/homepage" class="brand-logo">Mi Mascota</a>
+    <a href="/" class="brand-logo">Mi Mascota</a>
     <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
     <ul class="right hide-on-med-and-down">
 
     
 
-      <li><a href="http://localhost:5000/inicio"><i class="material-icons"><i class="material-icons">home</i></i></a></li>
-      <li><a href="http://localhost:5000/registropet"><i class="material-icons">pets</i></a></li>
+      <li><a href="/inicio"><i class="material-icons"><i class="material-icons">home</i></i></a></li>
+      <li><a href="/registro"><i class="material-icons">pets</i></a></li>
 
       <!-- Dropdown Trigger -->
-      <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons">face</i><i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a class="dropdown-button" href="#!" data-activates="dropdown1">
+      <i class="material-icons">face</i><i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
 
       <ul class="side-nav" id="mobile-demo">
@@ -117,7 +117,55 @@
 
 </section>
 
-   <!--Import jQuery before materialize.js-->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4 align="center">Inicio de Sesión</h4>
+      
+
+      <section>
+         <div class="row">
+    <div class="col s12">
+    <br>
+    <br>
+
+      <div class="row">
+
+        <div class="input-field col s4 offset-s4">
+          <i class="material-icons prefix">mail_outline</i>
+          <input placeholder="huellas@gmail.com" id="inicio_email" type="email" class="validate">
+          <label class ="active" for="email" data-error="Correo inválido" data-success="">Correo</label>
+        </div>
+        </div>
+
+        <div class="row">
+        <div class="input-field col s4 offset-s4">
+          <i class="material-icons prefix">lock</i>
+          <input id="inicio_pass" type="password" class="validate">
+          <label class="active" for="password" >Contraseña</label>
+        </div>
+      </div>
+      </div>
+
+      </div>
+
+    </section>
+     <div class="modal-footer" align="center">
+
+    <button onclick="inicioSesion()" class="modal-action modal-close waves-effect waves-light btn-medium" type="submit" name="action">Confirmar
+    <i class="material-icons right">send</i>
+    </button>
+
+    </div>
+  </div>
+
+</div>
+        
+</section>
+
+
+       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script src="js/jquery.js" ></script>
@@ -131,6 +179,27 @@
           });
 
       </script>
-      
-</body>
-</html>
+
+<script >
+ $(document).ready(function(){
+  $('.modal').modal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .5, // Opacity of modal background
+      inDuration: 300, // Transition in duration
+      outDuration: 200, // Transition out duration
+      startingTop: '4%', // Starting top style attribute
+      endingTop: '10%', // Ending top style attribute
+      ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+        
+        console.log(modal, trigger);
+      },
+      complete: function() {  } // Callback for Modal close
+    }
+  );
+});
+  </script>
+
+
+    </body>
+  </html>
+

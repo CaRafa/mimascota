@@ -3,16 +3,28 @@ function inicioSesion(){
 
       const email = document.getElementById('inicio_email').value;
       const password = document.getElementById('inicio_pass').value;
+      var is = document.getElementById('iniciar');
+      var cs = document.getElementById('cerrar');
 
         firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
         
         window.location = "/admin?uid="+user.uid;
         
+
         }).catch(function(error){
 
          alert(error.code);
 
         });
+}
+
+
+function cs (){
+var is = document.getElementById('iniciar');
+var cs = document.getElementById('cerrar');
+
+  cs.style.display = "none";
+
 }
 
 function tablaPend(){
