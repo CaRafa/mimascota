@@ -5,21 +5,94 @@ function inicioSesion(){
       const password = document.getElementById('inicio_pass').value;
 
         firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
-        console.log('user object:' + user.uid);
+        
+        window.location = "/admin?uid="+user.uid;
         
         }).catch(function(error){
 
          alert(error.code);
 
         });
+}
 
+function tablaPend(){
+
+      database = firebase.database();
+      var ref = database.ref('perro/');
+      ref.on('value', gotData, errData);
+
+}
+
+function gotData(data){
+
+console.log(data.val());
+
+var pborrar = document.getElementsByClassName("perrito");
+
+console.log(pborrar);
+for (var i = 0; i < pborrar.length; i++) {
+  pborrar[i].remove();
+}
+
+var perros = data.val();
+if(perros != undefined){
+  var cedDue = Object.keys(perros);
+
+ for(var i = 0; i< cedDue.length; i++){
+    var k = cedDue[i];
+    var nombre = perros[k].nombre;
+    var edadp = perros[k].edad;
+    var cedula = k;
+
+    console.log(cedula,nombre,edadp);
+  
+  // creacion de la fila    
+    var fila = document.createElement('tr');
+    fila.className = 'perrito';
+  // creacion de cada columna
+    var nom = document.createElement('td');
+    var edad = document.createElement('td');
+    var cedD = document.createElement('td');
+  // creacion de texto asociado a la columna
+    var valnom = document.createTextNode(nombre);
+    var valeda = document.createTextNode(edadp);
+    var valced = document.createTextNode(cedula);
+    //asociacion de texto a <td>
+    nom.appendChild(valnom);
+    edad.appendChild(valeda);
+    cedD.appendChild(valced);
+    //asociacion de <td> y <tr>
+    fila.appendChild(nom);
+    fila.appendChild(edad);
+    fila.appendChild(cedD);
+    // asociar tabla y <tr>
+    var tabla = document.getElementById('tablaP');
+    tabla.appendChild(fila);
+
+  }}
 
 
 
 }
 
 
+function errData(err){
+  console.log("error");
+  console.log(err);
+  
+}
 
+
+
+function getusuario(){
+
+  firebase.database().ref('perro/').once('value', function(snap){
+    
+    coleccion = snap.val();
+    console.log(coleccion);
+  });
+  
+}
 
 
 function crearAdmin(){
@@ -31,7 +104,7 @@ function crearAdmin(){
         firebase.auth().createUserWithEmailAndPassword(email, password).then(function(user){
         console.log('everything went fine');
         console.log('user object:' + user);
-        window.location = "/";
+        window.location = "/admin?uid="+user.uid;
         
         }).catch(function(error){
 
@@ -71,7 +144,7 @@ firebase.database().ref('entradas/'+cedula).set({
 
 function crearPerro(){
 
-alert('hola');
+
 var nombre = document.getElementById('getnombre').value;
 var edad = document.getElementById('getedad').value;
 var historia = document.getElementById('gethist').value;
@@ -85,7 +158,7 @@ queryString.split(/\&/).forEach(function(keyValuePair){
 });
 
 var cedula = decodeURI(GET["id"]);
-alert(cedula);
+
 
 firebase.database().ref('perro/'+cedula).set({
   nombre:nombre,
