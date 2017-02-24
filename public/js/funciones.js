@@ -196,11 +196,9 @@ firebase.database().ref('perro/'+cedula).set({
 }, function(error){
   alert(error.code);
 });
-
-
-
-
 }
+
+
 
 
 
