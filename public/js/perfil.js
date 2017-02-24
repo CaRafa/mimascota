@@ -48,4 +48,28 @@ function errData(err){
   
 }
 
+function aceptar(){
 
+
+
+}
+
+function rechazar(){
+
+
+
+}
+
+function back(){
+
+var user = firebase.auth().currentUser;
+
+if (user) {
+	window.location = "/admin?uid="+user.uid;
+} else {
+	alert("usuario no logeado");
+    window.location.replace("/");
+}
+
+
+}

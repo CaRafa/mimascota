@@ -189,7 +189,8 @@ var cedula = decodeURI(GET["id"]);
 firebase.database().ref('perro/'+cedula).set({
   nombre:nombre,
   edad:edad,
-  historia:historia
+  historia:historia,
+  estado: estado
 }).then(function(){
   window.location = "/";
 
