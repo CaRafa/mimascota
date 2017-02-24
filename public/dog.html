@@ -3,7 +3,7 @@
     <head>
 
   <script src="js/funciones.js"></script>
-
+  <script src="js/perfil.js"></script>
 
     <meta charset="UTF-8">
 
@@ -22,7 +22,7 @@
 
     </head>
 
-    <body>
+    <body onload="llenarPerfil()">
 
 <!-- Barra de navegación -->
 
@@ -70,24 +70,30 @@
     <form class="col s12">
 
       <div class="row">
+
         <div class="input-field col s4 offset-s2">
         <i class="material-icons prefix">pets</i>
-          <input  id="getnombre" type="text" class="validate" >
-          <label for="nombre">Nombre</label>
+        <label for="nombre">Nombre</label>
+        <br>
+        <textarea id="setnom" class="materialize-textarea" data-length="400" disabled="true"></textarea>
         </div>
 
         <div class="input-field col s4">
-          <input id="getedad" type="number" class="validate" >
+          
           <label for="edad">Edad</label>
+          <br>
+          <textarea disabled="true" id="setedad" class="materialize-textarea" data-length="400"></textarea>
         </div>
+
       </div>
 
          <div class="row">
       <form class="col s12">
         <div class="row">
           <div class="input-field col s6 offset-s3">
-            <textarea id="gethist" class="materialize-textarea" data-length="400"></textarea>
-            <label for="historia">Historia sobre mascota: </label>
+          <label for="historia">Historia sobre mascota: </label>
+          <br>
+          <textarea id="sethist" disabled="true"  class="materialize-textarea" data-length="400"></textarea>
           </div>
         </div>
       </form>
@@ -111,25 +117,26 @@
     <div class="row s12">
   
   <div class="input-field col s3 ">
-      <button onclick="" class="btn waves-effect waves-light" name="action">Aceptar
+      <button onclick="aceptar()" class="btn waves-effect waves-light" name="action">Aceptar
     <i class="material-icons right">send</i>
   </button>
   </div>      
 
   <div class="input-field col s3 ">
-      <button onclick="" class="btn waves-effect waves-light" name="action">Rechazar
+      <button onclick="rechazar()" class="btn waves-effect waves-light" name="action">Rechazar
     <i class="material-icons right">send</i>
   </button>
   </div>  
-
+  <!--
   <div class="input-field col s3 ">
       <button onclick="" class="btn waves-effect waves-light" name="action">Modificar
     <i class="material-icons right">send</i>
   </button>
   </div>  
-
+  -->
+  
   <div class="input-field col s3 ">
-      <button onclick="" class="btn waves-effect waves-light" name="action">Salir
+      <button onclick="back()" class="btn waves-effect waves-light" name="action">Salir
     <i class="material-icons right">send</i>
   </button>
   </div>  
