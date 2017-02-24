@@ -20,7 +20,7 @@ function inicioSesion(){
 function tablaAcept(){
 
       database = firebase.database();
-      var ref = database.ref('perro/').orderByChild("estado").equalTo("aceptado");
+      var ref = database.ref('perro/').orderByChild("aceptado").equalTo(!null);
       ref.on('value', gotData, errData);
 
 }
@@ -30,7 +30,8 @@ function tablaAcept(){
 function tablaRecha(){
 
       database = firebase.database();
-      var ref = database.ref('perro/').orderByChild("estado").equalTo("rechazado");
+      var ref = database.ref('perro/').orderByChild("pendiente").equalTo(null);
+      
       ref.on('value', gotData, errData);
 
 }
@@ -40,7 +41,7 @@ function tablaRecha(){
 function tablaPend(){
 
       database = firebase.database();
-      var ref = database.ref('perro/').orderByChild("estado").equalTo(null);
+      var ref = database.ref('perro/').orderByChild("pendiente").equalTo(null);
       ref.on('value', gotData, errData);
       
 
@@ -175,6 +176,8 @@ var nombre = document.getElementById('getnombre').value;
 var edad = document.getElementById('getedad').value;
 var historia = document.getElementById('gethist').value;
 
+
+
 var GET = {};
 var queryString = window.location.search.replace(/^\?/,'');
 queryString.split(/\&/).forEach(function(keyValuePair){
@@ -190,7 +193,6 @@ firebase.database().ref('perro/'+cedula).set({
   nombre:nombre,
   edad:edad,
   historia:historia,
-  estado: estado
 }).then(function(){
   window.location = "/";
 
