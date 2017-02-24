@@ -13,13 +13,7 @@ function inicioSesion(){
 
         });
 
-
-
-
 }
-
-
-
 
 
 function crearAdmin(){
