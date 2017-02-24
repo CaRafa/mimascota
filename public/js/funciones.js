@@ -15,13 +15,38 @@ function inicioSesion(){
         });
 }
 
-function tablaPend(){
+//query de entradas aceptadas
+
+function tablaAcept(){
 
       database = firebase.database();
-      var ref = database.ref('perro/');
+      var ref = database.ref('perro/').orderByChild("estado").equalTo("aceptado");
       ref.on('value', gotData, errData);
 
 }
+
+//query de entradas rechazadas
+
+function tablaRecha(){
+
+      database = firebase.database();
+      var ref = database.ref('perro/').orderByChild("estado").equalTo("rechazado");
+      ref.on('value', gotData, errData);
+
+}
+
+//query de entradas pendientes
+
+function tablaPend(){
+
+      database = firebase.database();
+      var ref = database.ref('perro/').orderByChild("estado").equalTo(null);
+      ref.on('value', gotData, errData);
+      
+
+}
+
+//funcion para llenar la tabla
 
 function gotData(data){
 
@@ -44,7 +69,6 @@ if(perros != undefined){
     var edadp = perros[k].edad;
     var cedula = k;
 
-    console.log(cedula,nombre,edadp);
   
   // creacion de la fila    
     var fila = document.createElement('tr');
@@ -53,28 +77,40 @@ if(perros != undefined){
     var nom = document.createElement('td');
     var edad = document.createElement('td');
     var cedD = document.createElement('td');
+    var link = document.createElement('td');
   // creacion de texto asociado a la columna
     var valnom = document.createTextNode(nombre);
     var valeda = document.createTextNode(edadp);
     var valced = document.createTextNode(cedula);
+
+  // link al perfil
+    var link = document.createElement("a");
+    link.setAttribute("href", "/dog?id="+cedula);
+  
+    var linkText = document.createTextNode("Perfil");
+    
+
     //asociacion de texto a <td>
     nom.appendChild(valnom);
     edad.appendChild(valeda);
     cedD.appendChild(valced);
+    link.appendChild(linkText);
+
+
     //asociacion de <td> y <tr>
     fila.appendChild(nom);
     fila.appendChild(edad);
     fila.appendChild(cedD);
+    fila.appendChild(link);
     // asociar tabla y <tr>
     var tabla = document.getElementById('tablaP');
     tabla.appendChild(fila);
 
   }}
 
-
-
 }
 
+//funcion de error
 
 function errData(err){
   console.log("error");
@@ -82,18 +118,7 @@ function errData(err){
   
 }
 
-
-
-function getusuario(){
-
-  firebase.database().ref('perro/').once('value', function(snap){
-    
-    coleccion = snap.val();
-    console.log(coleccion);
-  });
-  
-}
-
+//crear admin con email y password
 
 function crearAdmin(){
 
@@ -116,6 +141,7 @@ function crearAdmin(){
 
 }
 
+// crea a la persona por cedula
 
 function crearEntrada(){
 
@@ -124,14 +150,13 @@ var apellido = document.getElementById('getapellido').value;
 var cedula = document.getElementById('getcedula').value;
 var telefono = document.getElementById('gettelefono').value;
 var correo = document.getElementById('getemail').value;
-var estado = "Nuevo";
+var estado = "Pendiente";
 
 firebase.database().ref('entradas/'+cedula).set({
   nombre:nombre,
   apellido:apellido,
   telefono:telefono,
-  correo:correo,
-  estado: estado
+  correo:correo
 }).then(function(){
   window.location = "/registropet?id="+cedula;
 
@@ -141,6 +166,7 @@ firebase.database().ref('entradas/'+cedula).set({
 
 }
 
+//crea al perro por la cedula de la persona
 
 function crearPerro(){
 
@@ -178,24 +204,6 @@ firebase.database().ref('perro/'+cedula).set({
 
 
 
-/*
-
-
-
-<!-- STORAGE ORIGINAL
-
-service firebase.storage {
-  match /b/project--453990862005505311.appspot.com/o {
-    match /{allPaths=**} {
-      allow read, write: if request.auth != null;
-    }
-  }
-}
-
--->
-
-
-*/
 
 
 
