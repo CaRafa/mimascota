@@ -50,14 +50,42 @@ function errData(err){
 
 function aceptar(){
 
+	var GET = {};
+	var queryString = window.location.search.replace(/^\?/,'');
+	queryString.split(/\&/).forEach(function(keyValuePair){
+ 		 var paramName = keyValuePair.replace(/=.*$/,"");
+ 		 var paramValue = keyValuePair.replace(/^[^=]*\=/,"");
+		  GET[paramName] = paramValue;
+		});
 
+var idperro = decodeURI(GET["id"]);
 
+	  database = firebase.database();
+      var ref = database.ref('perro/'+idperro);
+
+      ref.update({ pendiente: false });
+      ref.update({aceptado: true });
+
+      back();
 }
 
 function rechazar(){
 
+var GET = {};
+	var queryString = window.location.search.replace(/^\?/,'');
+	queryString.split(/\&/).forEach(function(keyValuePair){
+ 		 var paramName = keyValuePair.replace(/=.*$/,"");
+ 		 var paramValue = keyValuePair.replace(/^[^=]*\=/,"");
+		  GET[paramName] = paramValue;
+		});
 
+var idperro = decodeURI(GET["id"]);
 
+	  database = firebase.database();
+      var ref = database.ref('perro/'+idperro);
+
+      ref.update({ pendiente:false});
+      back();
 }
 
 function back(){
