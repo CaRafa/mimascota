@@ -18,7 +18,6 @@ function inicioSesion(){
         });
 }
 
-<<<<<<< HEAD
 
 function cs (){
 var is = document.getElementById('iniciar');
@@ -28,7 +27,6 @@ var cs = document.getElementById('cerrar');
 
 }
 
-=======
 //query de entradas aceptadas
 
 function tablaAcept(){
@@ -52,7 +50,6 @@ function tablaRecha(){
 
 //query de entradas pendientes
 
->>>>>>> origin/master
 function tablaPend(){
 
       database = firebase.database();
@@ -166,19 +163,34 @@ var apellido = document.getElementById('getapellido').value;
 var cedula = document.getElementById('getcedula').value;
 var telefono = document.getElementById('gettelefono').value;
 var correo = document.getElementById('getemail').value;
-var estado = "Pendiente";
 
-firebase.database().ref('entradas/'+cedula).set({
-  nombre:nombre,
-  apellido:apellido,
-  telefono:telefono,
-  correo:correo
-}).then(function(){
-  window.location = "/registropet?id="+cedula;
 
-}, function(error){
-  alert(error.code);
-});
+firebase.database().ref("entradas/"+cedula).once("value").then(function(snapshot){
+
+    var verif = snapshot.val();
+
+    if(verif==null){
+
+      firebase.database().ref('entradas/'+cedula).set({
+      nombre:nombre,
+      apellido:apellido,
+      telefono:telefono,
+      correo:correo
+      }).then(function(){
+        window.location = "/registropet?id="+cedula;
+
+    }, function(error){
+      alert(error.code);
+    });
+      
+}
+    else{
+      alert("ese usuario ya registro una entrada");
+      window.location.replace("/");  
+    }
+
+  })
+
 
 }
 
@@ -215,7 +227,6 @@ firebase.database().ref('perro/'+cedula).set({
   alert(error.code);
 });
 }
-
 
 
 
