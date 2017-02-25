@@ -1,9 +1,6 @@
 {
   "rules": {
     ".read": true,
-    ".write": true,
-    "$uid": {
-        ".indexOn": "estado"
-      }
+    ".write": true
   }
 }
