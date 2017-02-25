@@ -18,17 +18,7 @@ function inicioSesion(){
         });
 }
 
-<<<<<<< HEAD
 
-function cs (){
-var is = document.getElementById('iniciar');
-var cs = document.getElementById('cerrar');
-
-  cs.style.display = "none";
-
-}
-
-=======
 //query de entradas aceptadas
 
 function tablaAcept(){
@@ -52,7 +42,7 @@ function tablaRecha(){
 
 //query de entradas pendientes
 
->>>>>>> origin/master
+
 function tablaPend(){
 
       database = firebase.database();
