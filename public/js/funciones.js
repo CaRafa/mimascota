@@ -18,17 +18,7 @@ function inicioSesion(){
         });
 }
 
-<<<<<<< HEAD
 
-function cs (){
-var is = document.getElementById('iniciar');
-var cs = document.getElementById('cerrar');
-
-  cs.style.display = "none";
-
-}
-
-=======
 //query de entradas aceptadas
 
 function tablaAcept(){
