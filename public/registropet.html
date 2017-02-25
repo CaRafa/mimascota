@@ -208,11 +208,15 @@
     for (var i = 0; i <= e.target.files.length; i++) {
       
        //Create storage ref
+
     var storageRef = firebase.storage().ref(cedula + '/images/'+ file[i].name);
 
+        
     //upload file
     var task = storageRef.put(file[i]);
     //update progress bar
+
+    var imgurl = task.snapshot.downloadURL;
 
     task.on('state_changed',
 
@@ -221,6 +225,8 @@
           snapshot.totalBytes) * 100;
         uploader.value = percentage;
 
+        alert(imgurl);
+
       },
 
       function error(err){
@@ -228,6 +234,7 @@
       },
 
       function complete() {
+        alert(imgurl);
 
       }
 

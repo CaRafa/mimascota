@@ -190,8 +190,6 @@ firebase.database().ref("entradas/"+cedula).once("value").then(function(snapshot
     }
 
   })
-
-
 }
 
 //crea al perro por la cedula de la persona
@@ -202,8 +200,6 @@ function crearPerro(){
 var nombre = document.getElementById('getnombre').value;
 var edad = document.getElementById('getedad').value;
 var historia = document.getElementById('gethist').value;
-
-
 
 var GET = {};
 var queryString = window.location.search.replace(/^\?/,'');
@@ -220,25 +216,19 @@ firebase.database().ref('perro/'+cedula).set({
   nombre:nombre,
   edad:edad,
   historia:historia,
+
 }).then(function(){
   window.location = "/";
 
-}, function(error){
+}, 
+
+function(error){
   alert(error.code);
 });
-<<<<<<< HEAD
+
+
+firebase.database().ref('imagenes/'+cedula).set({
+          
+        });
+        
 }
-=======
-}
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> origin/master
