@@ -43,7 +43,7 @@
 
     
 
-      <li><a href="/inicio"><i class="material-icons"><i class="material-icons">home</i></i></a></li>
+      <li><a href="/"><i class="material-icons"><i class="material-icons">home</i></i></a></li>
       <li><a href="/registropet"><i class="material-icons">pets</i></a></li>
 
       <!-- Dropdown Trigger -->
@@ -71,7 +71,6 @@
 
       <div class="row">
         <div class="input-field col s4 offset-s2">
-        <i class="material-icons prefix">pets</i>
           <input  id="getnombre" type="text" class="validate">
           <label for="nombre">Nombre</label>
         </div>
@@ -86,7 +85,7 @@
       <form class="col s12">
         <div class="row">
           <div class="input-field col s6 offset-s3">
-            <textarea id="gethist" class="materialize-textarea" data-length="400"></textarea>
+            <textarea id="gethist" class="materialize-textarea validate" data-length="400"></textarea>
             <label for="historia">¡Cuéntanos una historia sobre tu mascota!</label>
           </div>
         </div>
@@ -127,10 +126,19 @@
     </div>
 
         </div>
+
+
+        <div class="row">
+          <div class="input-field col s6 offset-s3">
+            <textarea id="gethist" class="materialize-textarea validate" data-length="400"></textarea>
+            <label for="historia">¿Dónde la conseguiste?</label>
+          </div>
+        </div>
+
     <div class="row">
     <div class="input-field col s4 offset-s4">
       <button onclick="crearPerro()" class="btn waves-effect waves-light" name="action">Confirmar
-    <i class="material-icons right">send</i>
+
   </button>
   </div>
     </div>
