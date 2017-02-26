@@ -7,9 +7,9 @@ function inicioSesion(){
       var cs = document.getElementById('cerrar');
 
         firebase.auth().signInWithEmailAndPassword(email, password).then(function(user){
-        
+
+        console.log('inicio exitoso');
         window.location = "/admin?uid="+user.uid;
-        
 
         }).catch(function(error){
 
@@ -33,7 +33,7 @@ function tablaAcept(){
 
       database = firebase.database();
       var ref = database.ref('perro/').orderByChild("aceptado").equalTo(!null);
-      ref.on('value', gotData, errData);
+      ref.on('value', llenate, errData);
 
 }
 
@@ -44,7 +44,7 @@ function tablaRecha(){
       database = firebase.database();
       var ref = database.ref('perro/').orderByChild("pendiente").equalTo(null);
       
-      ref.on('value', gotData, errData);
+      ref.on('value', llenate, errData);
 
 }
 
@@ -54,14 +54,14 @@ function tablaPend(){
 
       database = firebase.database();
       var ref = database.ref('perro/').orderByChild("pendiente").equalTo(null);
-      ref.on('value', gotData, errData);
+      ref.on('value', llenate, errData);
       
 
 }
 
 //funcion para llenar la tabla
 
-function gotData(data){
+function llenate(data){
 
 console.log(data.val());
 
@@ -129,6 +129,17 @@ function errData(err){
   console.log("error");
   console.log(err);
   
+}
+
+function logout(){
+
+firebase.auth().signOut().then(function() {
+    console.log('sesion cerrada');
+
+ }, function(error) {
+  console.log(error);
+});
+
 }
 
 //crear admin con email y password
